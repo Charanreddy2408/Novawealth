@@ -5,31 +5,37 @@ export const tiktokVideos = [
     url: "https://www.tiktok.com/@karthik.ganapathy/video/7441153306694634770",
     category: "Tax & strategy",
     caption: "Practical tax and wealth ideas for families earning well in Australia.",
+    fallbackImage: "/Karthik-26-orange.jpg",
   },
   {
     url: "https://www.tiktok.com/@karthik.ganapathy/video/7646204667055099154",
     category: "Super explained",
     caption: "Superannuation questions worth asking before retirement gets closer.",
+    fallbackImage: "/Karthik-20-neutral.jpg",
   },
   {
     url: "https://www.tiktok.com/@karthik.ganapathy/video/7640317709036555538",
     category: "Family wealth",
     caption: "Balancing family support with your own long-term financial security.",
+    fallbackImage: "/Karthik-58-blue.jpg",
   },
   {
     url: "https://www.tiktok.com/@karthik.ganapathy/video/7632821857309216008",
     category: "Investing",
     caption: "Investment decisions explained without unnecessary jargon or hype.",
+    fallbackImage: "/Karthik-66-neutral.jpg",
   },
   {
     url: "https://www.tiktok.com/@karthik.ganapathy/video/7619851413149043975",
     category: "Retirement",
     caption: "Retirement planning gaps families often discover too late.",
+    fallbackImage: "/Karthik-152-neutral.jpg",
   },
   {
     url: "https://www.tiktok.com/@karthik.ganapathy/video/7524827648103566600",
     category: "Financial clarity",
     caption: "Turning a strong income into one clearer financial direction.",
+    fallbackImage: "/Keerthi-11-blue.jpg",
   },
 ] as const;
 
