@@ -40,7 +40,19 @@ export async function GET(request: Request) {
             );
             clearTimeout(timeoutId);
 
-            if (!response.ok) return NextResponse.json({ error: "Unable to fetch" }, { status: 502 });
+            if (!response.ok) {
+                // If TikTok blocks the oEmbed request with 403, we can still parse the URL and return the iframe manually.
+                const manualMatch = finalUrl.match(/video\/(\d+)/i);
+                if (manualMatch && manualMatch[1]) {
+                    return NextResponse.json({
+                        title: "TikTok Video",
+                        thumbnailUrl: "",
+                        author: "",
+                        embedUrl: `https://www.tiktok.com/embed/v2/${manualMatch[1]}`
+                    });
+                }
+                return NextResponse.json({ error: "Unable to fetch" }, { status: 502 });
+            }
             const data = await response.json();
 
             let embedUrl = url;
