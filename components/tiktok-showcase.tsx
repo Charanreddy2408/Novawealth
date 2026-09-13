@@ -2,7 +2,7 @@
 
 import { ChevronLeft, ChevronRight, ExternalLink, MessageCircle, Play, Loader2 } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { tiktokVideos } from "@/content/social-content";
 
@@ -13,10 +13,66 @@ function circularOffset(index: number, active: number, length: number) {
   return offset;
 }
 
+function NativeMp4Player({ url, active, fallback }: { url: string, active: boolean, fallback?: string }) {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (!active && isPlaying) {
+      setIsPlaying(false);
+      videoRef.current?.pause();
+    }
+  }, [active, isPlaying]);
+
+  return (
+    <>
+      <video
+        ref={videoRef}
+        src={url}
+        playsInline
+        controls={isPlaying}
+        preload="metadata"
+        poster={fallback}
+        style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '24px', background: '#1c1c1c' }}
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
+      />
+      {!isPlaying && (
+        <>
+          <button 
+             type="button"
+             className="social-video-click-area" 
+             onClick={(e) => {
+                e.preventDefault();
+                if (active) {
+                   videoRef.current?.play();
+                   setIsPlaying(true);
+                }
+             }}
+             style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 10, cursor: active ? 'pointer' : 'default', border: 'none', background: 'transparent' }}
+             aria-label="Play video"
+          />
+          <span className="social-video-shade" />
+          <span className="social-video-top" style={{ zIndex: 2 }}>
+            <small>Insights</small>
+            <small>VIDEO</small>
+          </span>
+          <span className="social-play" style={{ zIndex: 2 }}><Play fill="currentColor" /></span>
+          <span className="social-open-tag" style={{ zIndex: 2, pointerEvents: 'none' }}>
+            Play video <Play size={11} fill="currentColor" />
+          </span>
+        </>
+      )}
+    </>
+  );
+}
+
 function TikTokInlinePlayer({ url, fallback, active }: { url: string, fallback?: string, active: boolean }) {
+  const isMp4 = url.toUpperCase().endsWith(".MP4");
+  
   const [embedData, setEmbedData] = useState<{ thumbnailUrl?: string, embedUrl?: string } | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(!isMp4);
 
   // Stop playing if this card is no longer the active center card
   useEffect(() => {
@@ -26,6 +82,7 @@ function TikTokInlinePlayer({ url, fallback, active }: { url: string, fallback?:
   }, [active]);
 
   useEffect(() => {
+    if (isMp4) return;
     let mounted = true;
     setIsLoading(true);
     fetch(`/api/oembed?url=${encodeURIComponent(url)}`)
@@ -37,7 +94,11 @@ function TikTokInlinePlayer({ url, fallback, active }: { url: string, fallback?:
          if (mounted) setIsLoading(false);
       });
     return () => { mounted = false; };
-  }, [url]);
+  }, [url, isMp4]);
+
+  if (isMp4) {
+    return <NativeMp4Player url={url} active={active} fallback={fallback} />;
+  }
 
   if (isPlaying && embedData?.embedUrl) {
     return (
@@ -164,7 +225,11 @@ export function TikTokShowcase() {
               <p className="eyebrow eyebrow-light">{selected.category}</p>
               <h3>{selected.caption}</h3>
               <a href={selected.url} target="_blank" rel="noopener noreferrer" className="button button-light mt-auto">
-                Watch on TikTok <ExternalLink />
+                {selected.url.toUpperCase().endsWith(".MP4") ? (
+                  <>Watch Video <Play size={16} fill="currentColor" /></>
+                ) : (
+                  <>Watch on TikTok <ExternalLink /></>
+                )}
               </a>
             </div>
           </aside>

@@ -2,37 +2,37 @@
 
 export const tiktokVideos = [
   {
-    url: "https://www.tiktok.com/@karthik.ganapathy/video/7441153306694634770",
+    url: "/IMG_8089.MP4",
     category: "Tax & strategy",
     caption: "Practical tax and wealth ideas for families earning well in Australia.",
     fallbackImage: "/Karthik-26-orange.jpg",
   },
   {
-    url: "https://www.tiktok.com/@karthik.ganapathy/video/7646204667055099154",
+    url: "/IMG_8090.MP4",
     category: "Super explained",
     caption: "Superannuation questions worth asking before retirement gets closer.",
     fallbackImage: "/Karthik-20-neutral.jpg",
   },
   {
-    url: "https://www.tiktok.com/@karthik.ganapathy/video/7640317709036555538",
+    url: "/IMG_8091.MP4",
     category: "Family wealth",
     caption: "Balancing family support with your own long-term financial security.",
     fallbackImage: "/Karthik-58-blue.jpg",
   },
   {
-    url: "https://www.tiktok.com/@karthik.ganapathy/video/7632821857309216008",
+    url: "/IMG_8092.MP4",
     category: "Investing",
     caption: "Investment decisions explained without unnecessary jargon or hype.",
     fallbackImage: "/Karthik-66-neutral.jpg",
   },
   {
-    url: "https://www.tiktok.com/@karthik.ganapathy/video/7619851413149043975",
+    url: "/IMG_8093.MP4",
     category: "Retirement",
     caption: "Retirement planning gaps families often discover too late.",
     fallbackImage: "/Karthik-152-neutral.jpg",
   },
   {
-    url: "https://www.tiktok.com/@karthik.ganapathy/video/7524827648103566600",
+    url: "/IMG_8094.MP4",
     category: "Financial clarity",
     caption: "Turning a strong income into one clearer financial direction.",
     fallbackImage: "/Keerthi-11-blue.jpg",
