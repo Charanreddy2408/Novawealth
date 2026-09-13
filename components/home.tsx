@@ -17,8 +17,8 @@ import { problems, processSteps } from "@/content/site-content";
 import { stockMedia } from "@/lib/site-config";
 
 const reveal = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, y: 30, filter: "blur(6px)" },
+  visible: { opacity: 1, y: 0, filter: "blur(0px)" },
 };
 
 function Reveal({
@@ -36,9 +36,9 @@ function Reveal({
       className={className}
       initial={reduceMotion ? false : "hidden"}
       whileInView="visible"
-      viewport={{ once: true, margin: "-40px" }}
+      viewport={{ once: true, margin: "-15%" }}
       variants={reveal}
-      transition={{ duration: 0.48, delay: delay * 0.65, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.7, delay: delay * 0.45, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
     </motion.div>
@@ -312,10 +312,10 @@ export function HowWeHelpSection() {
               <motion.div
                 key={pillar.title}
                 className="pillar-card"
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.45, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                initial={{ opacity: 0, y: 30, filter: "blur(5px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                viewport={{ once: true, margin: "-10%" }}
+                transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
               >
                 <span className="pillar-icon">
                   <Icon size={22} strokeWidth={1.5} />
