@@ -4,7 +4,7 @@ export const siteConfig = {
   description:
     "Strategic financial advice for established migrant families who want to reduce tax, invest confidently and secure their family’s future in Australia.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://novawealth.com.au",
-  phone: process.env.NEXT_PUBLIC_PHONE ?? "03 3010 3277",
+  phone: process.env.NEXT_PUBLIC_PHONE ?? " 03 8658 6464",
   email: process.env.NEXT_PUBLIC_EMAIL ?? "hello@novawealth.com.au",
   location: "Australia-wide advice",
   calendlyUrl: process.env.NEXT_PUBLIC_CALENDLY_URL ?? "",
