@@ -8,6 +8,7 @@ export const siteConfig = {
   email: process.env.NEXT_PUBLIC_EMAIL ?? "hello@novawealth.com.au",
   location: "Australia-wide advice",
   calendlyUrl: process.env.NEXT_PUBLIC_CALENDLY_URL ?? "",
+  googleAnalyticsId: process.env.NEXT_PUBLIC_GA_ID ?? "",
   scoreAppUrl: process.env.NEXT_PUBLIC_SCOREAPP_URL ?? "",
   linkedInUrl: process.env.NEXT_PUBLIC_LINKEDIN_URL ?? "#",
   tikTokUrl: process.env.NEXT_PUBLIC_TIKTOK_URL ?? "#",
