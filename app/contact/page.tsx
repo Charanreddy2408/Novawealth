@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { CalendlyEmbed } from "@/components/calendly-embed";
+import { TrackedLink } from "@/components/tracked-link";
 
 export const metadata: Metadata = {
   title: "Start a Conversation",
@@ -40,9 +41,9 @@ export default function ContactPage() {
               Take our quick financial check-up to see where you&apos;re already
               on track and where there may be gaps worth reviewing.
             </p>
-            <Link href="/10-year-check" className="button button-light">
+            <TrackedLink href="/10-year-check" className="button button-light" trackingEvent="scorecard_start" trackingData={{ location: "contact_secondary" }}>
               Check If I&apos;m On Track <ArrowRight />
-            </Link>
+            </TrackedLink>
           </ScrollReveal>
         </div>
       </section>

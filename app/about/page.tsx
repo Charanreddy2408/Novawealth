@@ -22,6 +22,22 @@ function LinkedInIcon({ size = 16 }: { size?: number }) {
     </svg>
   );
 }
+
+function InstagramIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 448 512" fill="currentColor">
+      <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+    </svg>
+  );
+}
+
+function TikTokIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 448 512" fill="currentColor">
+      <path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h0A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14Z"/>
+    </svg>
+  );
+}
 import { motion, useReducedMotion } from "motion/react";
 import { useState } from "react";
 import { founderBelief, founderStory } from "@/content/site-content";
@@ -60,8 +76,6 @@ function Reveal({
 function FounderSection() {
   return (
     <section className="about-founder-section">
-      {/* Decorative background word */}
-      <div className="about-bg-word" aria-hidden="true">STORY</div>
 
       {/* ── Part 1: Two-column intro — portrait + opening paragraphs ── */}
       <div className="shell about-founder-grid">
@@ -145,14 +159,35 @@ function FounderSection() {
           <p className="about-founder-role mb-8">
             <Award size={15} /> Founder &amp; Financial Adviser
           </p>
-          <a
-            href={siteConfig.linkedInUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="about-linkedin-btn inline-flex"
-          >
-            <LinkedInIcon size={16} /> LinkedIn
-          </a>
+          <div className="about-founder-actions">
+            <a
+              href="https://www.linkedin.com/in/karthikganapathys/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="about-social-btn linkedin"
+              onClick={() => track("social_click", { platform: "linkedin", location: "about_founder" })}
+            >
+              <LinkedInIcon size={16} /> LinkedIn
+            </a>
+            <a
+              href="https://www.instagram.com/karthik_financialadviser?stkn=eW5lYmRicTVhbmt1&utm_source=qr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="about-social-btn instagram"
+              onClick={() => track("social_click", { platform: "instagram", location: "about_founder" })}
+            >
+              <InstagramIcon size={16} /> Instagram
+            </a>
+            <a
+              href="https://www.tiktok.com/@karthik.ganapathy?_r=1&_t=ZS-99h66MePJLj"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="about-social-btn tiktok"
+              onClick={() => track("social_click", { platform: "tiktok", location: "about_founder" })}
+            >
+              <TikTokIcon size={16} /> TikTok
+            </a>
+          </div>
         </Reveal>
       </div>
     </section>
@@ -164,31 +199,59 @@ function FounderSection() {
 // ─── Section 1.5: Why Good advice shouldn’t wait ──────────────────────────────────────────────
 function WhyGoodAdviceSection() {
   return (
-    <section className="about-good-advice-section py-20 bg-primary/5">
-      <div className="shell max-w-4xl mx-auto text-center">
-        <Reveal>
-          <h2 className="text-3xl md:text-5xl font-medium tracking-tight mb-8">
-            Why good advice shouldn’t wait until retirement
-          </h2>
-        </Reveal>
-        <Reveal delay={0.1}>
-          <p className="text-lg md:text-xl text-foreground/80 mb-6 leading-relaxed">
-            Good financial advice shouldn’t only arrive when retirement is around the corner.
-          </p>
-          <p className="text-lg md:text-xl text-foreground/80 mb-6 leading-relaxed">
-            Some of your most important financial decisions are made while your career is strong, your family is growing and you still have time for those decisions to make a meaningful difference.
-          </p>
-          <p className="text-lg md:text-xl text-foreground/80 mb-6 leading-relaxed">
-            That may include how you manage tax, invest outside super, reduce debt, protect your family and prepare for retirement.
-          </p>
-          <p className="text-lg md:text-xl text-foreground/80 mb-10 leading-relaxed font-medium">
-            Our role is to help you understand which decisions matter now—so you can make the most of the opportunities ahead.
-          </p>
+    <section className="relative overflow-hidden py-24 md:py-32 bg-[var(--paper)]">
+      {/* Decorative ambient blur behind the card */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-6xl h-[120%] bg-[var(--grad-sun)] opacity-[0.03] blur-3xl pointer-events-none rounded-full" />
+      
+      {/* Decorative background word - positioned on the cream section */}
+      <div className="about-bg-word" style={{ opacity: 0.15, bottom: 'auto', top: '-1rem' }} aria-hidden="true">STORY</div>
+      
+      <div className="shell relative z-10">
+        <div className="max-w-6xl mx-auto rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(48,32,12,0.06),_0_0_0_1px_rgba(48,32,12,0.05)] bg-white flex flex-col md:flex-row transform transition-all duration-700 hover:shadow-[0_30px_60px_rgba(48,32,12,0.1),_0_0_0_1px_rgba(199,124,16,0.3)]">
           
-          <Link href="/contact" className="button inline-flex items-center mx-auto">
-            Start a Conversation <ArrowRight size={16} className="ml-2" />
-          </Link>
-        </Reveal>
+          {/* Left side: Heading */}
+          <div className="md:w-5/12 p-10 md:p-14 lg:p-16 flex flex-col justify-center relative overflow-hidden shrink-0" style={{ background: 'var(--grad-sun)' }}>
+             {/* Abstract light burst overlay */}
+             <div className="absolute top-[-30%] left-[-20%] w-[180%] h-[180%] bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.25)_0%,transparent_60%)] rounded-full pointer-events-none" />
+             <Reveal>
+               <div className="inline-flex items-center justify-center w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl mb-8 border border-white/20 shadow-lg">
+                 <ShieldCheck className="w-6 h-6 text-white" />
+               </div>
+               <h2 className="text-3xl lg:text-4xl font-display font-medium text-white leading-[1.2] m-0 relative z-10">
+                 Why good advice shouldn’t wait until <span className="text-[#ffe6b3]">retirement.</span>
+               </h2>
+             </Reveal>
+          </div>
+          
+          {/* Right side: Body & CTA */}
+          <div className="md:w-7/12 p-10 md:p-14 lg:p-16 bg-white flex flex-col justify-center">
+            <Reveal delay={0.1}>
+              <p className="text-xl md:text-2xl text-[var(--ink)] mb-6 font-display font-medium leading-snug">
+                Good financial advice shouldn’t only arrive when retirement is around the corner.
+              </p>
+              <p className="text-[1rem] text-[var(--muted)] mb-6 leading-relaxed">
+                Some of your most important financial decisions are made while your career is strong, your family is growing, and you still have time for those decisions to make a meaningful difference.
+              </p>
+              
+              <div className="pl-5 border-l-[3px] border-[#efc069] mb-8 py-1 bg-amber-50/40 rounded-r-xl">
+                <p className="text-[0.95rem] text-[var(--muted)] m-0 leading-relaxed font-medium">
+                  That includes how you manage tax, invest outside super, reduce debt, protect your family, and prepare for retirement.
+                </p>
+              </div>
+              
+              <p className="text-[1rem] text-[var(--ink)] mb-10 leading-relaxed font-semibold">
+                Our role is to help you understand which decisions matter now—so you can make the most of the opportunities ahead.
+              </p>
+              
+              <div>
+                <Link href="/contact" className="button inline-flex items-center group">
+                  Start a Conversation <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </Reveal>
+          </div>
+          
+        </div>
       </div>
     </section>
   );
@@ -259,9 +322,9 @@ function ValuesSection() {
 const teamMembers = [
   {
     name: "Keerthi",
-    role: "Operational Manager",
+    role: "Operations Manager",
     tagline: "Manages the day-to-day operations at Nova Wealth, ensuring our processes run smoothly and efficiently.",
-    specialty: ["operational manager", "Team managment", "Procees Improvement", "Operation Stategy"],
+    specialty: ["operations manager", "Team managment", "Procees Improvement", "Operation Stategy"],
     photo: stockMedia.keerthiBlue,
     linkedin: "#",
   },
@@ -271,7 +334,7 @@ const teamMembers = [
     tagline: "Building the detailed research and modelling behind every strategy.",
     specialty: ["Strategy modelling", "Active preparation", "Compliance","Technical"],
     photo: "/image1.png",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/gowthamrajhari",
   },
   {
     name: "Yesyeswini Sarma",
@@ -279,7 +342,7 @@ const teamMembers = [
     tagline: "Supporting client meetings and coordinating strategy implementation.",
     specialty: ["Review preparation", "Implementation", "Process coordination", "Client onboarding"],
     photo: "/image2.png",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/yesyeswini-sarma-865924112",
   },
   {
     name: "Gayathri S",
@@ -287,7 +350,7 @@ const teamMembers = [
     tagline: "Managing account applications and administrative workflows.",
     specialty: ["Account setups", "Client services", "Platform administration", "Data management"],
     photo: "/image3.png",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/gayathri-s-4114373b5",
   },
 ];
 

@@ -15,6 +15,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { problems, processSteps } from "@/content/site-content";
 import { stockMedia } from "@/lib/site-config";
+import { track } from "@/lib/analytics";
 
 const reveal = {
   hidden: { opacity: 0, y: 30, filter: "blur(6px)" },
@@ -86,10 +87,10 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.24, duration: 0.45 }}
         >
-          <Link href="/contact" className="button button-light">
+          <Link href="/contact" className="button button-light" onClick={() => track("hero_cta_click", { location: "hero_primary" })}>
             Start a Conversation <ArrowRight size={18} />
           </Link>
-          <Link href="/10-year-check" className="hero-secondary-link">
+          <Link href="/10-year-check" className="hero-secondary-link" onClick={() => track("scorecard_start", { location: "hero_secondary" })}>
             Take the 10-Year Financial Check-Up →
           </Link>
         </motion.div>
@@ -112,12 +113,12 @@ export function ProblemSection() {
     "The whole picture",
   ];
   const problemImages = [
-    // Australian tax — ATO / myGov style (replace USA tax docs)
-    "https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=800&q=80",
+    // Tax pressure
+    "/taxpressure.jpeg",
     // Investing — Australian financial charts
     "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80",
-    // Super/retirement — older Australian couple
-    "https://images.unsplash.com/photo-1573497491765-dccce02b29df?auto=format&fit=crop&w=800&q=80",
+    // Super working hard enough
+    "/superworking-hard image.jpeg",
     // Retirement alignment — Indian/South Asian family (parents + children)
     "https://images.unsplash.com/photo-1609220136736-443140cffec6?auto=format&fit=crop&w=800&q=80",
     // The whole picture — professional multicultural meeting

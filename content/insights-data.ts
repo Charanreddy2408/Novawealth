@@ -364,7 +364,7 @@ export const insightsData: Insight[] = [
     title: "The 10-Year Retirement Countdown: What to Focus on From Age 50",
     category: "Preparing for Retirement",
     author: "Karthik Ganapathy, CFP®",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=1200&h=800", // Standard retirement planning stock photo
+    image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?auto=format&fit=crop&q=80&w=1200&h=800", // Australian coastal/retirement lifestyle
     summary: "Age 50 to 60 is the sprint zone. This checklist breaks down precisely what to evaluate as your working-years narrow down.",
     htmlContent: `
       <p>The decade before retirement can be one of the most important periods in your financial life.</p>

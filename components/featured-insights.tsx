@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { insightsData } from "@/content/insights-data";
 import { featuredInsightSlugs } from "@/content/featured-insights";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { TrackedLink } from "@/components/tracked-link";
 
 export function FeaturedInsights() {
   const featured = featuredInsightSlugs.map((slug) =>
@@ -28,7 +29,7 @@ export function FeaturedInsights() {
         <div className="insights-grid" style={{ marginTop: '3rem' }}>
           {featured.map((insight, i) => (
             <ScrollReveal className="insight-card" key={insight.slug} delay={i * 0.1}>
-              <Link href={`/insights/${insight.slug}`} className="insight-card-link">
+              <TrackedLink href={`/insights/${insight.slug}`} className="insight-card-link" trackingEvent="article_click" trackingData={{ title: insight.title, category: insight.category, slug: insight.slug, location: "featured" }}>
                 <div className="insight-image-wrap">
                   <Image
                     src={insight.image}
@@ -46,7 +47,7 @@ export function FeaturedInsights() {
                     Read Article <ArrowRight size={16} />
                   </span>
                 </div>
-              </Link>
+              </TrackedLink>
             </ScrollReveal>
           ))}
         </div>

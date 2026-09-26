@@ -150,20 +150,67 @@ export default function WebsiteDisclosurePage() {
 
       <h2>Fees</h2>
       <p>
-        The fees charged for our advice are designed to be fair and clear. Our advice fees may include charges for the following advice services:
+        Our fees are designed to be clear, fair and proportionate to the scope and complexity of the advice and services we provide. Before commencing any work, we will explain the applicable fees and agree them with you.
+      </p>
+
+      <h3>Consultation fee</h3>
+      <p>
+        Consultation fees start from $440. The actual fee will depend on the nature of the consultation, the preparation required and the complexity of the matters being discussed.
+      </p>
+
+      <h3>Advice fee</h3>
+      <p>
+        Our advice fees generally range from $4,400 to $22,000.
+      </p>
+      <p>
+        This fee covers the research, analysis, strategy development and preparation of your personalised financial advice. The amount will depend on the scope and complexity of the advice, the number of strategies considered, and the work required to develop your financial plan.
+      </p>
+      <p>
+        Where your circumstances require advice outside this range, the fee will be discussed and agreed with you before any work begins.
+      </p>
+
+      <h3>Advice implementation fee</h3>
+      <p>
+        Implementation fees start from $2,200.
+      </p>
+      <p>
+        This fee covers the professional and administrative work involved in putting your agreed recommendations into place. The final fee will depend on the strategies being implemented, the products and structures involved, and the estimated time required.
+      </p>
+
+      <h3>Hourly rates</h3>
+      <p>
+        Where services are charged based on time, our minimum hourly rates are:
       </p>
       <ul>
-        <li><strong>Consultation Fee:</strong> You may be charged up to $330 for a consultation.</li>
-        <li><strong>Advice Fee:</strong> The advice fee covers the cost of researching and preparing your financial plan. The price can be a flat fee with an additional performance or risk margin depending on the size and complexity of the advice.</li>
-        <li><strong>Advice implementation:</strong> The advice implementation fee covers the administrative time spent implementing the recommended strategies and products. This cost will be calculated on the estimated time to complete the task.</li>
-        <li><strong>Admin Fee:</strong> This will be charged for any other admin services provided.</li>
-        <li><strong>Hourly Rate:</strong> The hourly rate charged for the Adviser time is $330/h and the Admin Staff are charged at 110/h.</li>
+        <li>Financial Adviser: from $440 per hour</li>
+        <li>Administration team: from $110 per hour</li>
       </ul>
       <p>
-        The advice implementation fee will be disclosed in your Advice Agreement or your SOA.
+        All fees applicable to your circumstances will be clearly disclosed in your Advice Agreement and, where relevant, your Statement of Advice.
+      </p>
+
+      <h3>Annual or ongoing advice</h3>
+      <p>
+        Financial advice is not always a one-off event. Your circumstances, priorities, investments, superannuation and the rules that affect your financial position can change over time.
       </p>
       <p>
-        <strong>Annual or Ongoing advice:</strong> This is the fee for the Annual or ongoing advice, it will cover the cost to keep your strategy and investments current and up to date as well as any services provided by the practice. This will be a separate document provided at the time of the advice.
+        Our annual or ongoing advice service is designed to help keep your financial strategy current and aligned with your goals. Depending on the service agreed with you, this may include:
+      </p>
+      <ul>
+        <li>Regular strategy and progress reviews</li>
+        <li>Investment portfolio oversight and rebalancing</li>
+        <li>Superannuation and contribution planning</li>
+        <li>Retirement planning and income reviews</li>
+        <li>Cash-flow and wealth-building guidance</li>
+        <li>Personal insurance reviews</li>
+        <li>Consideration of relevant tax and legislative changes</li>
+        <li>Ongoing access to our advice team</li>
+      </ul>
+      <p>
+        Ongoing advice fees may be charged as a fixed fee, a percentage-based fee, or a combination of both. The appropriate fee structure will depend on the scope of services, the complexity of your circumstances and the level of ongoing advice required.
+      </p>
+      <p>
+        Your services, fees, payment arrangements and the period of engagement will be clearly explained and documented in a separate ongoing service agreement or fixed-term agreement.
       </p>
 
       <h2>Life insurance payments</h2>

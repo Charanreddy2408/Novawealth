@@ -116,8 +116,8 @@ h3 { line-height: 1.15; }
 .hero h1 span { color: #ffe6c1; background: none; -webkit-text-fill-color: initial; font-weight: 500; }
 .hero-copy { max-width: 52ch; color: rgba(255,255,255,.9); font-size: clamp(1rem, 1.4vw, 1.18rem); line-height: 1.7; margin-left: 0; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-top: 2rem; align-items: center; justify-content: flex-start; }
-.hero-secondary-link { display: inline-flex; align-items: center; padding: .65rem 1.4rem; border: 1px solid rgba(255,255,255,.2); border-radius: 99px; background: rgba(0,0,0,.15); color: white; font-size: .83rem; font-weight: 700; transition: border-color .25s, background .25s; text-decoration: none; }
-.hero-secondary-link:hover { border-color: rgba(251,189,17,.6); background: rgba(251,189,17,.05); }
+.hero-secondary-link { display: inline-flex; align-items: center; padding: .65rem 1.4rem; border: 1px solid rgba(251,189,17,.6); border-radius: 99px; background: transparent; color: white; font-size: .83rem; font-weight: 700; transition: border-color .25s, background .25s, transform .25s, box-shadow .25s; text-decoration: none; }
+.hero-secondary-link:hover { border-color: #fbbd11; background: rgba(251,189,17,.1); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(251,189,17,.15); }
 .video-control { position: absolute; z-index: 2; right: 2rem; bottom: 2rem; display: grid; place-items: center; border: 0; background: transparent; color: white; cursor: pointer; }
 .video-control svg { width: 31px; height: 31px; }
 
@@ -487,7 +487,7 @@ h3 { line-height: 1.15; }
 /* ── About Page ──────────────────────────────────────────────────────────── */
 
 /* Founder section (first section, acts as page opening) */
-.about-founder-section { position: relative; padding: clamp(5.5rem, 7vw, 7rem) 0 clamp(4rem, 6vw, 6rem); background: white; overflow: hidden; }
+.about-founder-section { position: relative; padding: clamp(5.5rem, 7vw, 7rem) 0 clamp(1.5rem, 3vw, 3rem); background: white; overflow: hidden; }
 .about-bg-word { position: absolute; right: -2rem; bottom: -3rem; color: rgba(48,32,12,.04); font-size: clamp(9rem, 22vw, 20rem); font-weight: 900; line-height: .8; letter-spacing: -.09em; text-transform: uppercase; pointer-events: none; user-select: none; }
 .about-founder-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(3rem, 6vw, 6rem); align-items: start; }
 /* Premium Booking Bento */
@@ -548,11 +548,20 @@ h3 { line-height: 1.15; }
 .about-pull-quote-mark { display: block; color: var(--brand); font-family: Georgia, serif; font-size: 4.5rem; line-height: .4; margin-bottom: .9rem; opacity: .4; }
 .about-pull-quote-mark.close { display: block; text-align: right; margin-bottom: 0; margin-top: .4rem; line-height: 0; transform: translateY(1.2rem); margin-right: -0.5rem; }
 /* Full-width story body below the two-column intro */
-.about-founder-story { max-width: 720px; padding-top: clamp(2.5rem, 4vw, 4rem); padding-bottom: clamp(2.5rem, 4vw, 4rem); }
+.about-founder-story { max-width: 720px; padding-top: clamp(2.5rem, 4vw, 4rem); padding-bottom: 1.5rem; }
 .about-founder-sig { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--line); }
 .about-founder-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
-.about-linkedin-btn { display: inline-flex; align-items: center; gap: .45rem; height: 48px; padding: 0 1.2rem; border: 1.5px solid var(--brand); border-radius: 100px; color: var(--brand); font-size: .8rem; font-weight: 700; text-decoration: none; transition: background .25s, color .25s; }
-.about-linkedin-btn:hover { border-color: transparent; background: var(--grad-gold); color: #20160a; box-shadow: 0 10px 26px rgba(199,124,16,.3); }
+.about-social-btn { display: inline-flex; align-items: center; gap: .45rem; height: 48px; padding: 0 1.2rem; border: 1.5px solid var(--line); border-radius: 100px; color: var(--ink); font-size: .8rem; font-weight: 700; text-decoration: none; transition: background .25s, color .25s, border-color .25s, box-shadow .25s, text-shadow .25s; }
+.about-social-btn:hover { border-color: transparent; color: white; }
+
+.about-social-btn.linkedin { border-color: #0a66c2; color: #0a66c2; }
+.about-social-btn.linkedin:hover { background: #0a66c2; color: white; box-shadow: 0 8px 24px rgba(10, 102, 194, 0.3); }
+
+.about-social-btn.instagram { border-color: #E1306C; color: #E1306C; }
+.about-social-btn.instagram:hover { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; box-shadow: 0 8px 24px rgba(225, 48, 108, 0.3); }
+
+.about-social-btn.tiktok { border-color: #010101; color: #010101; }
+.about-social-btn.tiktok:hover { background: #010101; color: white; box-shadow: 0 8px 24px rgba(1, 1, 1, 0.2); }
 
 /* Values */
 .about-values-section { padding: clamp(4.5rem, 7vw, 7.5rem) 0; background: radial-gradient(ellipse at 12% 0%, rgba(245,118,26,.16), transparent 55%), radial-gradient(ellipse at 88% 100%, rgba(251,189,17,.1), transparent 52%), #181109; color: white; }
@@ -583,8 +592,8 @@ h3 { line-height: 1.15; }
 .team-card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: .5rem; }
 .team-card-name { margin: 0; font-size: 1rem; font-weight: 700; color: var(--ink); line-height: 1.2; }
 .team-card-role { margin: .2rem 0 0; font-size: .7rem; font-weight: 700; color: var(--brand); letter-spacing: .05em; text-transform: uppercase; }
-.team-linkedin { display: grid; place-items: center; width: 34px; height: 34px; border: 1.5px solid var(--brand); border-radius: 8px; color: var(--brand); flex-shrink: 0; transition: background .2s, color .2s; }
-.team-linkedin:hover { border-color: transparent; background: var(--grad-gold); color: #20160a; }
+.team-linkedin { display: grid; place-items: center; width: 34px; height: 34px; border: 1.5px solid #0a66c2; border-radius: 8px; color: #0a66c2; flex-shrink: 0; transition: background .2s, color .2s, border-color .2s, box-shadow .2s; }
+.team-linkedin:hover { border-color: transparent; background: #0a66c2; color: white; box-shadow: 0 4px 14px rgba(10, 102, 194, 0.3); }
 .team-card-tagline { margin: 0; color: var(--muted); font-size: .84rem; line-height: 1.6; }
 .team-card-since { display: inline-flex; align-items: center; gap: .35rem; color: #988a74; font-size: .65rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
 

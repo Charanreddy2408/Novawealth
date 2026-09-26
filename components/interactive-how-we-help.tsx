@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { track } from "@/lib/analytics";
 
 type Pillar = {
   id: string;
@@ -25,13 +26,24 @@ export function InteractivePillars({ pillars }: { pillars: Pillar[] }) {
             <button
               key={pillar.id}
               className={`display-tab ${isActive ? "active" : ""}`}
-              onClick={() => setActiveTab(i)}
+              onClick={() => {
+                setActiveTab(i);
+                track("tab_click", { tab: pillar.title });
+              }}
               onMouseEnter={() => setActiveTab(i)}
             >
-              <span style={{ fontFamily: "var(--font-display)", opacity: 0.4, fontSize: "1.2rem", marginRight: "0.8rem", pointerEvents: "none" }}>
+              <span style={{ 
+                fontFamily: "var(--font-display)", 
+                opacity: isActive ? 1 : 0.4, 
+                color: isActive ? "#FBB811" : "inherit",
+                fontSize: "1.2rem", 
+                marginRight: "0.8rem", 
+                pointerEvents: "none",
+                transition: "all 0.3s ease"
+              }}>
                 {pillar.number}
               </span>
-              <span>{pillar.title}</span>
+              <span className="font-medium">{pillar.title}</span>
               {isActive && (
                 <motion.div
                   layoutId="pillar-tab-indicator"
@@ -57,11 +69,15 @@ export function InteractivePillars({ pillars }: { pillars: Pillar[] }) {
             <div 
               style={{ 
                 fontFamily: "var(--font-display)", 
-                color: "var(--brand)", 
-                fontSize: "6rem", 
-                lineHeight: 0.8,
-                opacity: 0.15, 
-                marginBottom: "1.5rem" 
+                background: "linear-gradient(135deg, #FBB811 0%, #F5761A 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                fontSize: "7rem", 
+                lineHeight: 0.9,
+                opacity: 1, 
+                marginBottom: "2rem",
+                display: "inline-block",
+                filter: "drop-shadow(0px 8px 16px rgba(251, 184, 17, 0.2))"
               }}
             >
               {activePillar.number}

@@ -74,6 +74,7 @@ export function AdviserReviewsSection() {
                 aria-selected={active === index}
                 aria-controls="adviser-review-panel"
                 onClick={() => setActive(index)}
+                onMouseEnter={() => setActive(index)}
                 key={review.name}
               >
                 <span>{review.name}</span>

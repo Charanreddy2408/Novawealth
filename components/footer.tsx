@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { siteConfig } from "@/lib/site-config";
+import { track } from "@/lib/analytics";
 
 function LinkedInIcon({ size = 16 }: { size?: number }) {
   return (
@@ -25,7 +26,13 @@ export function Footer() {
               financial security and preparing for the future with confidence.
             </p>
             <div className="footer-socials">
-              <a href={siteConfig.linkedInUrl} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <a
+                href={siteConfig.linkedInUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                onClick={() => track("social_click", { platform: "linkedin", location: "footer" })}
+              >
                 <LinkedInIcon size={18} />
               </a>
             </div>
@@ -67,10 +74,16 @@ export function Footer() {
             <p className="footer-label">Connect with us</p>
             <ul className="footer-contact-list" style={{ gap: "0.5rem" }}>
               <li>
-                <a href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}>{siteConfig.phone}</a>
+                <a
+                  href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
+                  onClick={() => track("phone_click", { location: "footer" })}
+                >{siteConfig.phone}</a>
               </li>
               <li>
-                <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+                <a
+                  href={`mailto:${siteConfig.email}`}
+                  onClick={() => track("email_click", { location: "footer" })}
+                >{siteConfig.email}</a>
               </li>
               <li>
                 <span>Suite 10, 1 Main Street Box Hill Vic 3128</span>

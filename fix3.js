@@ -1,0 +1,1 @@
+const fs = require("fs"); let f = fs.readFileSync("content/social-content.ts", "utf8"); f = f.replace(/@\{Value=(https:\/\/[^\}]+)\}/g, "$1"); fs.writeFileSync("content/social-content.ts", f); console.log("Fixed urls!");

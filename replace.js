@@ -1,0 +1,1 @@
+const fs=require('fs'); let f=fs.readFileSync('content/social-content.ts','utf8'); let u1=fs.readFileSync('out1.txt','utf8').trim(); let u2=fs.readFileSync('out2.txt','utf8').trim(); f=f.replace('/Karthik-20-neutral.jpg', u1); f=f.replace('/Karthik-66-neutral.jpg', u2); fs.writeFileSync('content/social-content.ts', f); console.log('all good');

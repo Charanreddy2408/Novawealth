@@ -110,6 +110,9 @@ export async function GET(request: Request) {
         let imageUrl = "";
         if (match && match[1]) {
             imageUrl = match[1].replace(/&amp;/g, '&');
+            if (imageUrl.includes("static.licdn.com")) {
+                imageUrl = ""; // Reject generic LinkedIn open graph logo
+            }
         }
 
         // Attempt to resolve an embed URL

@@ -224,6 +224,8 @@ export function TikTokShowcase() {
             <div className="social-preview-body">
               <p className="eyebrow eyebrow-light">{selected.category}</p>
               <h3>{selected.caption}</h3>
+              {/* @ts-ignore */}
+              {selected.description && <p className="text-foreground/80" style={{ marginBottom: "1.5rem" }}>{selected.description}</p>}
               <a href={selected.url} target="_blank" rel="noopener noreferrer" className="button button-light mt-auto">
                 {selected.url.toUpperCase().endsWith(".MP4") ? (
                   <>Watch Video <Play size={16} fill="currentColor" /></>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { TrackedLink } from "@/components/tracked-link";
 
 export function PageHero({
   eyebrow,
@@ -39,9 +40,9 @@ export function ConsultationCallout({
             With the right advice and one coordinated strategy, your family can
             move forward with greater clarity, confidence and peace of mind.
           </p>
-          <Link href="/contact" className="button button-light">
+          <TrackedLink href="/contact" className="button button-light" trackingEvent="booking_click" trackingData={{ location: "page_callout" }}>
             Start a Conversation <ArrowRight />
-          </Link>
+          </TrackedLink>
         </ScrollReveal>
       </div>
     </section>

@@ -6,6 +6,7 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { insightsData, insightsCategories } from "@/content/insights-data";
+import { track } from "@/lib/analytics";
 
 export function InsightsGrid() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
@@ -48,7 +49,11 @@ export function InsightsGrid() {
               className="insight-card"
               key={insight.slug}
             >
-              <Link href={`/insights/${insight.slug}`} className="insight-card-link">
+              <Link
+                href={`/insights/${insight.slug}`}
+                className="insight-card-link"
+                onClick={() => track("article_click", { title: insight.title, category: insight.category, slug: insight.slug })}
+              >
                 <div className="insight-image-wrap">
                   <Image
                     src={insight.image}
