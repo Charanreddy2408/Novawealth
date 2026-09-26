@@ -31,7 +31,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                onClick={() => track("social_click", { platform: "linkedin", location: "footer" })}
+                onClick={() => track("social_click", { network: "linkedin", location: "footer" })}
               >
                 <LinkedInIcon size={18} />
               </a>

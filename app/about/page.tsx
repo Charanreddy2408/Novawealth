@@ -166,7 +166,7 @@ function FounderSection() {
               target="_blank"
               rel="noopener noreferrer"
               className="about-social-btn linkedin"
-              onClick={() => track("social_click", { platform: "linkedin", location: "about_founder" })}
+              onClick={() => track("social_click", { network: "linkedin", location: "about_founder" })}
             >
               <LinkedInIcon size={16} /> LinkedIn
             </a>
@@ -175,7 +175,7 @@ function FounderSection() {
               target="_blank"
               rel="noopener noreferrer"
               className="about-social-btn instagram"
-              onClick={() => track("social_click", { platform: "instagram", location: "about_founder" })}
+              onClick={() => track("social_click", { network: "instagram", location: "about_founder" })}
             >
               <InstagramIcon size={16} /> Instagram
             </a>
@@ -184,7 +184,7 @@ function FounderSection() {
               target="_blank"
               rel="noopener noreferrer"
               className="about-social-btn tiktok"
-              onClick={() => track("social_click", { platform: "tiktok", location: "about_founder" })}
+              onClick={() => track("social_click", { network: "tiktok", location: "about_founder" })}
             >
               <TikTokIcon size={16} /> TikTok
             </a>

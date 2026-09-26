@@ -197,7 +197,7 @@ export function TikTokShowcase() {
                     }}
                     key={index}
                   >
-                     <TikTokInlinePlayer url={video.url} active={isActive} />
+                     <TikTokInlinePlayer url={video.url} fallback={video.fallbackImage} active={isActive} />
                   </motion.div>
                 );
               })}
