@@ -32,7 +32,6 @@ function NativeMp4Player({ url, active, fallback }: { url: string, active: boole
         playsInline
         controls={isPlaying}
         preload="metadata"
-        poster={fallback}
         style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '24px', background: '#1c1c1c' }}
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
@@ -54,7 +53,7 @@ function NativeMp4Player({ url, active, fallback }: { url: string, active: boole
           />
           <span className="social-video-shade" />
           <span className="social-video-top" style={{ zIndex: 2 }}>
-            <small>Insights</small>
+            <small>TikTok</small>
             <small>VIDEO</small>
           </span>
           <span className="social-play" style={{ zIndex: 2 }}><Play fill="currentColor" /></span>
@@ -67,12 +66,13 @@ function NativeMp4Player({ url, active, fallback }: { url: string, active: boole
   );
 }
 
-function TikTokInlinePlayer({ url, fallback, active }: { url: string, fallback?: string, active: boolean }) {
+function TikTokInlinePlayer({ url, fallback, fallbackVideo, active }: { url: string, fallback?: string, fallbackVideo?: string, active: boolean }) {
   const isMp4 = url.toUpperCase().endsWith(".MP4");
   
   const [embedData, setEmbedData] = useState<{ thumbnailUrl?: string, embedUrl?: string } | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(!isMp4);
+  const [embedFailed, setEmbedFailed] = useState(false);
 
   // Stop playing if this card is no longer the active center card
   useEffect(() => {
@@ -85,10 +85,21 @@ function TikTokInlinePlayer({ url, fallback, active }: { url: string, fallback?:
     if (isMp4) return;
     let mounted = true;
     setIsLoading(true);
+    setEmbedFailed(false);
     fetch(`/api/oembed?url=${encodeURIComponent(url)}`)
       .then((r) => (r.ok ? r.json() : null))
       .then((data) => {
-        if (mounted && data) setEmbedData(data);
+        if (mounted) {
+           // Treating empty thumbnailUrl as a failure because it means the oEmbed API was blocked
+           if (data && !data.error && data.thumbnailUrl) {
+               setEmbedData(data);
+           } else {
+               setEmbedFailed(true);
+           }
+        }
+      })
+      .catch(() => {
+         if (mounted) setEmbedFailed(true);
       })
       .finally(() => {
          if (mounted) setIsLoading(false);
@@ -96,8 +107,9 @@ function TikTokInlinePlayer({ url, fallback, active }: { url: string, fallback?:
     return () => { mounted = false; };
   }, [url, isMp4]);
 
-  if (isMp4) {
-    return <NativeMp4Player url={url} active={active} fallback={fallback} />;
+  // If this is directly an MP4 link, or if the TikTok embed failed and we have a fallback video, play natively.
+  if (isMp4 || (embedFailed && fallbackVideo)) {
+    return <NativeMp4Player url={isMp4 ? url : fallbackVideo!} active={active} fallback={fallback} />;
   }
 
   if (isPlaying && embedData?.embedUrl) {
