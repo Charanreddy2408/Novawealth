@@ -32,6 +32,7 @@ function NativeMp4Player({ url, active, fallback }: { url: string, active: boole
         playsInline
         controls={isPlaying}
         preload="metadata"
+        poster={fallback}
         style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '24px', background: '#1c1c1c' }}
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
