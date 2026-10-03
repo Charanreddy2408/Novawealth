@@ -27,6 +27,7 @@ function NativeMp4Player({ url, active, fallback }: { url: string, active: boole
   return (
     <>
       <video
+        key={url}
         ref={videoRef}
         src={url + '#t=0.001'}
         playsInline
@@ -207,7 +208,7 @@ export function TikTokShowcase() {
                       duration: reduceMotion ? 0 : 0.55,
                       ease: [0.22, 1, 0.36, 1],
                     }}
-                    key={index}
+                    key={video.url}
                   >
                      <TikTokInlinePlayer url={video.url} fallback={video.fallbackImage} active={isActive} />
                   </motion.div>

@@ -3,10 +3,10 @@
 export const tiktokVideos = [
   {
     url: "/IMG_8089.MP4",
-    category: "Super Contributions",
-    caption: "How to Claim Super Contributions",
-    description: "A simple guide to claiming eligible super contributions in your tax return and avoiding common mistakes.",
-    fallbackImage: "/Karthik-26-orange.jpg",
+    category: "Super & Kids",
+    caption: "Creating Tax-Efficient Wealth for Your Kids",
+    description: "Learn how super contribution strategies may help you pass wealth on more tax-effectively.",
+    fallbackImage: "/Keerthi-11-blue.jpg",
   },
   {
     url: "/IMG_8090.MP4",
@@ -38,10 +38,10 @@ export const tiktokVideos = [
   },
   {
     url: "/IMG_8094.MP4",
-    category: "Super & Kids",
-    caption: "Creating Tax-Efficient Wealth for Your Kids",
-    description: "Learn how super contribution strategies may help you pass wealth on more tax-effectively.",
-    fallbackImage: "/Keerthi-11-blue.jpg",
+    category: "Super Contributions",
+    caption: "How to Claim Super Contributions",
+    description: "A simple guide to claiming eligible super contributions in your tax return and avoiding common mistakes.",
+    fallbackImage: "/Karthik-26-orange.jpg",
   },
 ] as const;
 

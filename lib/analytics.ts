@@ -11,6 +11,8 @@ export type AnalyticsEvent =
   | "article_click"
   | "resource_download"
   | "tab_click"
+  | "carousel_next"
+  | "carousel_prev"
   | "hero_cta_click"
   | "footer_nav_click";
 
